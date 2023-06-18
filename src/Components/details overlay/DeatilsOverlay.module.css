@@ -1,0 +1,48 @@
+.model__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.model__container {
+  width: 40%;
+  height: max-content;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 0 5px #fff;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem 0;
+  overflow-y: scroll;
+}
+
+.details {
+  max-width: 100%;
+  height: max-content;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.close__icons {
+  width: 3rem;
+  height: 3rem;
+  font-weight: bold;
+  color: red;
+  cursor: pointer;
+}
+
+.habit__details__container {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 2rem 3rem;
+}
