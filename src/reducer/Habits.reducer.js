@@ -3,6 +3,7 @@ import Habits from "../Data/habits.Data";
 const INITIAL__STATE = {
   habits: Habits,
   seletedHabit: {},
+  archive: [],
 };
 
 const habitReducerFunc = (state, { type, payload }) => {
@@ -20,7 +21,7 @@ const habitReducerFunc = (state, { type, payload }) => {
       const newHabit = [
         ...state.habits,
         {
-          id: payload.Name,
+          id: payload?.id,
           Name: payload?.Name,
           repeat: "daily",
           goal: "2_times",
@@ -35,10 +36,35 @@ const habitReducerFunc = (state, { type, payload }) => {
         habits: newHabit,
       };
     }
+    case "EDIT_HABIT": {
+      console.log("🚀");
+      const updatedHabit = state.habits.map((eachHabit) =>
+        eachHabit.id === payload.id ? payload : eachHabit
+      );
+      console.log(
+        "🚀 ~ file: Habits.reducer.js:54 ~ habitReducerFunc ~ updatedHabit:",
+        updatedHabit
+      );
+
+      return {
+        ...state,
+        habits: updatedHabit,
+      };
+    }
+
+    case "ADD_TO_ARCHIVE": {
+      const removeFrom = state.habits.filter((habit) => habit.id !== payload);
+      const addTo = state.habits.filter((habit) => habit.id === payload);
+
+      return {
+        ...state,
+        habits: removeFrom,
+        archive: [...state.archive, ...addTo],
+      };
+    }
 
     case "DELETE_HABIT": {
       const newHabit = state.habits.filter((habit) => habit.id !== payload);
-
       return {
         ...state,
         habits: newHabit,

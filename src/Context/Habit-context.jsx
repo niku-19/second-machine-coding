@@ -23,13 +23,31 @@ const HabitContextProvider = ({ children }) => {
     dispatch({ type: "ADD_NEW_HABIT", payload: newHabit });
   };
 
+  const editHabitFnc = (item) => {
+    console.log("🚀 ~ file: Habit-context.jsx:27 ~ editHabitFnc ~ item:", item);
+    console.log("runnig");
+    dispatch({ type: "EDIT_HABIT", payload: item });
+  };
+
+  const addToArchive = (id) => {
+    dispatch({ type: "ADD_TO_ARCHIVE", payload: id });
+  };
+
   const deleteHabit = (id) => {
     dispatch({ type: "DELETE_HABIT", payload: id });
   };
 
   return (
     <HabitContext.Provider
-      value={{ habits, dispatch, seltectedHabit, addNewHabit, deleteHabit }}
+      value={{
+        habits,
+        dispatch,
+        seltectedHabit,
+        addNewHabit,
+        deleteHabit,
+        editHabitFnc,
+        addToArchive,
+      }}
     >
       {children}
     </HabitContext.Provider>

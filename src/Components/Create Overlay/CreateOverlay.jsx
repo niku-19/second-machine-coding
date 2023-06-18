@@ -7,6 +7,7 @@ import { useHabitData } from "../../Context/Habit-context";
 const CreateOverlay = ({ closeCreateOverlayHandler }) => {
   const { addNewHabit } = useHabitData();
   const [newHabit, setNewHabit] = useState({
+    id: Math.random(),
     Name: "",
     repate: "daily",
     goal: "1_time",

@@ -1,6 +1,6 @@
 const Habits = [
   {
-    id: "1",
+    id: 1,
     Name: "Meditate",
     repeat: "daily",
     goal: "2_times",
@@ -9,7 +9,7 @@ const Habits = [
     desc: "Meditation is a powerful tool for spiritual growth, and is essentially a process to take one beyond the limitations of body and mind.",
   },
   {
-    id: "2",
+    id: 2,
     Name: "Set a To-do list",
     repeat: "daily",
     goal: "2_times",
@@ -18,7 +18,7 @@ const Habits = [
     desc: "Always set todo list to schedule your time tabel and it is good for health",
   },
   {
-    id: "3",
+    id: 3,
     Name: "Drink Water",
     repeat: "daily",
     goal: "After_1_hour",
@@ -27,7 +27,7 @@ const Habits = [
     desc: "always drink water and be hydrated and it is good for health",
   },
   {
-    id: "4",
+    id: 4,
     Name: "Read Books",
     repeat: "daily",
     goal: "1_time",
@@ -36,7 +36,7 @@ const Habits = [
     desc: "Reading books is a good habit and it make you more knowledgable",
   },
   {
-    id: "5",
+    id: 5,
     Name: "Running",
     repeat: "daily",
     goal: "1_time",
@@ -45,7 +45,7 @@ const Habits = [
     desc: "Running is a good habit and it is good for health",
   },
   {
-    id: "6",
+    id: 6,
     Name: "Quick Stretch",
     repeat: "daily",
     goal: "1_time",
@@ -54,7 +54,7 @@ const Habits = [
     desc: "Quick Stretch is a good habit and it is good for health",
   },
   {
-    id: "7",
+    id: 7,
     Name: "Hit the Gym",
     repeat: "daily",
     goal: "1_time",

@@ -4,10 +4,11 @@ import { useHabitData } from "../../Context/Habit-context";
 import styles from "./EditOverlays.module.css";
 import { GiTireIronCross } from "react-icons/gi";
 
-const EditOverlay = ({ closeoverlay }) => {
-  const { habits } = useHabitData();
+const EditOverlay = ({ closeoverlay, closeCreateOverlayHandler }) => {
+  const { habits, editHabitFnc } = useHabitData();
 
   const [editHabit, setEditHabit] = useState({
+    id: habits?.seletedHabit?.id,
     Name: habits?.seletedHabit?.Name,
     repate: habits?.seletedHabit?.repate,
     goal: habits?.seletedHabit?.goal,
@@ -15,6 +16,13 @@ const EditOverlay = ({ closeoverlay }) => {
     startDate: habits?.seletedHabit?.startDate,
     desc: habits?.seletedHabit?.desc,
   });
+
+  const editHabitHandler = (e, item) => {
+    e.preventDefault();
+    closeoverlay();
+    closeCreateOverlayHandler();
+    editHabitFnc(item);
+  };
 
   return (
     <>
@@ -40,7 +48,7 @@ const EditOverlay = ({ closeoverlay }) => {
                 name="habitsName"
                 id="habitsName"
                 placeholder="Add Your Habit Name"
-                value={habits?.seletedHabit?.Name}
+                value={editHabit.Name}
                 onChange={(e) =>
                   setEditHabit({ ...editHabit, Name: e.target.value })
                 }
@@ -63,7 +71,7 @@ const EditOverlay = ({ closeoverlay }) => {
             <div className={styles.form__group}>
               <label htmlFor="">Goal</label>
               <select
-                value={habits?.seletedHabit?.goal}
+                value={editHabit.goal}
                 onChange={(e) =>
                   setEditHabit({ ...editHabit, goal: e.target.value })
                 }
@@ -78,7 +86,7 @@ const EditOverlay = ({ closeoverlay }) => {
             <div className={styles.form__group}>
               <label htmlFor="">Time Of the Day</label>
               <select
-                value={habits?.seletedHabit?.time}
+                value={editHabit.time}
                 onChange={(e) =>
                   setEditHabit({ ...editHabit, time: e.target.value })
                 }
@@ -93,7 +101,7 @@ const EditOverlay = ({ closeoverlay }) => {
             <div className={styles.form__group}>
               <label htmlFor="">Start Date</label>
               <select
-                value={habits?.seletedHabit?.startDate}
+                value={editHabit.startDate}
                 onChange={(e) =>
                   setEditHabit({ ...editHabit, startDate: e.target.value })
                 }
@@ -112,13 +120,15 @@ const EditOverlay = ({ closeoverlay }) => {
                 cols="30"
                 rows="10"
                 placeholder="Add Your Habit Description"
-                value={habits?.seletedHabit?.desc}
+                value={editHabit.desc}
                 onChange={(e) =>
                   setEditHabit({ ...editHabit, desc: e.target.value })
                 }
               ></textarea>
             </div>
-            <button>Add Habits</button>
+            <button onClick={(e) => editHabitHandler(e, editHabit)}>
+              Confirm edit
+            </button>
           </form>
         </div>
       </div>

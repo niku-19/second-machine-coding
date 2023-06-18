@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useHabitData } from "../../Context/Habit-context";
-import { AiFillDelete, AiTwotoneEdit } from "react-icons/ai";
+import { AiFillDelete } from "react-icons/ai";
+import { BiArchiveIn } from "react-icons/bi";
 
 import styles from "./HabitsCard.module.css";
 
@@ -8,9 +9,8 @@ const HabitsCard = ({
   habit,
   showCreateOverlayHandler,
   showDetailsOverlayHandler,
-  showEditOverlayHandler,
 }) => {
-  const { seltectedHabit, deleteHabit } = useHabitData();
+  const { seltectedHabit, deleteHabit, addToArchive } = useHabitData();
 
   const openModelOverlay = () => {
     if (habit.Name === "create your first habit") {
@@ -27,8 +27,9 @@ const HabitsCard = ({
     deleteHabit(habit.id);
   };
 
-  const handleEditHabit = () => {
-    showEditOverlayHandler();
+  const handleArchiveHabit = (e) => {
+    e.stopPropagation();
+    addToArchive(habit.id);
   };
 
   return (
@@ -38,11 +39,11 @@ const HabitsCard = ({
         <div className={styles.icons__container}>
           <AiFillDelete
             className={styles.delete__icon}
-            onClick={handleDeleteHabit}
+            onClick={(e) => handleDeleteHabit(e)}
           />
-          <AiTwotoneEdit
+          <BiArchiveIn
             className={styles.delete__icon}
-            onClick={handleEditHabit}
+            onClick={(e) => handleArchiveHabit(e)}
           />
         </div>
       )}

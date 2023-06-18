@@ -39,7 +39,12 @@ const DetailsOverlay = ({ closeCreateOverlayHandler }) => {
           <button onClick={() => setShowCreateOverlay(true)}>Edit</button>
         </div>
       </div>
-      {showCreateOverlay && <EditOverlay closeoverlay={closeoverlay} />}
+      {showCreateOverlay && (
+        <EditOverlay
+          closeoverlay={closeoverlay}
+          closeCreateOverlayHandler={closeCreateOverlayHandler}
+        />
+      )}
     </>
   );
 };

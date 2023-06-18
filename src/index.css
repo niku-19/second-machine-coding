@@ -109,7 +109,8 @@ button {
   font-family: "Roboto", sans-serif;
   font-size: 1.6rem;
   line-height: 1.2;
-  color: #333;
+  color: #fff;
+  background-color: blueviolet;
   border: 1px solid #333;
   padding: 1rem 2rem;
   cursor: pointer;
